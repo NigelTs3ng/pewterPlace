@@ -6,218 +6,182 @@ import Image from '../../../components/AppImage';
 const RecentPulls = () => {
   const [activeTab, setActiveTab] = useState('recent');
 
-  const recentPulls = [
+  const tabs = [
+    { id: 'recent', label: 'Recent Pulls', icon: 'Clock' },
+    { id: 'rare', label: 'Rare Finds', icon: 'Star' },
+    { id: 'trending', label: 'Trending', icon: 'TrendingUp' }
+  ];
+
+  const pulls = [
     {
       id: 1,
-      user: "TrainerAlex92",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face",
-      card: "Charizard ex (PAL 054)",
-      set: "Paldea Evolved",
-      rarity: "Ultra Rare",
-      image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=300&h=420&fit=crop",
+      name: "Charizard VSTAR",
+      set: "Crown Zenith",
+      price: "$89.99",
+      image: "https://images.unsplash.com/photo-1613963931023-5dc59437c8a6?w=300&h=400&fit=crop",
+      rarity: "ultra-rare",
+      condition: "Near Mint",
+      user: {
+        name: "Sarah Chen",
+        avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=50&h=50&fit=crop"
+      },
       timestamp: "2 hours ago",
-      likes: 47,
-      comments: 12,
-      value: "$89.99"
+      likes: 234,
+      comments: 12
     },
-    {
-      id: 2,
-      user: "PikachuCollector",
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face",
-      card: "Pikachu VMAX (SWSH 188)",
-      set: "SWSH Promo",
-      rarity: "Secret Rare",
-      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=420&fit=crop",
-      timestamp: "4 hours ago",
-      likes: 89,
-      comments: 23,
-      value: "$124.99"
-    },
-    {
-      id: 3,
-      user: "CardMaster2023",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face",
-      card: "Mew ex (MEW 151)",
-      set: "Pokémon 151",
-      rarity: "Ultra Rare",
-      image: "https://images.unsplash.com/photo-1613963931023-5dc59437c8a6?w=300&h=420&fit=crop",
-      timestamp: "6 hours ago",
-      likes: 156,
-      comments: 34,
-      value: "$67.99"
-    },
-    {
-      id: 4,
-      user: "VintageHunter",
-      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop&crop=face",
-      card: "Base Set Charizard",
-      set: "Base Set",
-      rarity: "Holo Rare",
-      image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=300&h=420&fit=crop",
-      timestamp: "8 hours ago",
-      likes: 203,
-      comments: 67,
-      value: "$1,299.99"
-    }
+    // ...more pulls
   ];
-
-  const topPulls = [
-    {
-      id: 1,
-      user: "LegendaryPulls",
-      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop&crop=face",
-      card: "Shadowless Charizard PSA 10",
-      set: "Base Set",
-      rarity: "Holo Rare",
-      image: "https://images.unsplash.com/photo-1613963931023-5dc59437c8a6?w=300&h=420&fit=crop",
-      timestamp: "1 day ago",
-      likes: 892,
-      comments: 156,
-      value: "$8,999.99"
-    },
-    {
-      id: 2,
-      user: "RainbowChaser",
-      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=40&h=40&fit=crop&crop=face",
-      card: "Pikachu Illustrator",
-      set: "Promo",
-      rarity: "Promo",
-      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=420&fit=crop",
-      timestamp: "2 days ago",
-      likes: 1247,
-      comments: 289,
-      value: "$12,999.99"
-    }
-  ];
-
-  const currentPulls = activeTab === 'recent' ? recentPulls : topPulls;
 
   const getRarityColor = (rarity) => {
-    switch (rarity?.toLowerCase()) {
-      case 'common':
-        return 'text-slate-600';
-      case 'uncommon':
-        return 'text-emerald-600';
-      case 'rare':
-        return 'text-blue-600';
-      case 'ultra rare':
-        return 'text-purple-600';
-      case 'secret rare':
-        return 'text-amber-600';
-      case 'holo rare':
-        return 'text-pink-600';
-      case 'promo':
-        return 'text-red-600';
-      default:
-        return 'text-slate-600';
-    }
+    const colors = {
+      'common': 'from-slate-400 to-slate-500',
+      'uncommon': 'from-emerald-400 to-emerald-500',
+      'rare': 'from-blue-400 to-blue-500',
+      'ultra-rare': 'from-purple-400 to-purple-500',
+      'secret': 'from-amber-400 to-amber-500'
+    };
+    return colors[rarity] || colors.common;
   };
 
   return (
-    <div className="mb-12">
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
+    <div className="mb-16">
+      {/* Header */}
+      <div className="flex flex-col md:flex-row items-center justify-between mb-8 space-y-4 md:space-y-0">
         <div>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Community Pulls
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-2 tracking-tight">
+            Latest Discoveries
           </h2>
           <p className="text-lg text-muted-foreground">
-            See what amazing cards our collectors are pulling from PewterPlace products
+            Fresh pulls and rare finds from our community
           </p>
         </div>
-        
-        <div className="flex items-center space-x-1 bg-muted rounded-lg p-1 mt-4 md:mt-0">
-          <button
-            onClick={() => setActiveTab('recent')}
-            className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-200 ${
-              activeTab === 'recent' ?'bg-card text-foreground shadow-sm' :'text-muted-foreground hover:text-foreground'
-            }`}
-          >
-            Recent Pulls
-          </button>
-          <button
-            onClick={() => setActiveTab('top')}
-            className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-200 ${
-              activeTab === 'top' ?'bg-card text-foreground shadow-sm' :'text-muted-foreground hover:text-foreground'
-            }`}
-          >
-            Top Pulls
-          </button>
+
+        {/* Tabs */}
+        <div className="flex bg-muted rounded-full p-1">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                activeTab === tab.id
+                  ? 'bg-white text-foreground shadow-collector'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              <Icon name={tab.icon} size={16} />
+              <span>{tab.label}</span>
+            </button>
+          ))}
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {currentPulls?.map((pull) => (
-          <div
-            key={pull?.id}
-            className="bg-card border border-border rounded-xl overflow-hidden hover:shadow-card-shadow-hover transition-all duration-300 hover:-translate-y-1 group"
-          >
-            {/* Card Image */}
-            <div className="relative">
-              <Image
-                src={pull?.image}
-                alt={pull?.card}
-                className="w-full h-48 object-cover"
-              />
-              <div className="absolute top-3 left-3">
-                <span className={`px-2 py-1 text-xs font-semibold rounded-full bg-card/90 backdrop-blur-sm ${getRarityColor(pull?.rarity)}`}>
-                  {pull?.rarity}
-                </span>
-              </div>
-              <div className="absolute top-3 right-3">
-                <span className="px-2 py-1 text-xs font-bold text-white bg-success rounded-full">
-                  {pull?.value}
-                </span>
-              </div>
-              
-              {/* Holographic Effect Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse-slow"></div>
-            </div>
 
-            {/* Content */}
-            <div className="p-4">
-              <div className="flex items-center space-x-3 mb-3">
+      {/* Cards Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {pulls.map((pull) => (
+          <div key={pull.id} className="group">
+            <div className="card-premium relative">
+              {/* Card Image */}
+              <div className="relative aspect-[3/4] overflow-hidden rounded-t-xl">
+                <div className={`absolute inset-0 bg-gradient-to-br ${getRarityColor(pull.rarity)} opacity-10`}></div>
                 <Image
-                  src={pull?.avatar}
-                  alt={pull?.user}
-                  className="w-8 h-8 rounded-full object-cover"
+                  src={pull.image}
+                  alt={pull.name}
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="flex-1">
-                  <p className="font-semibold text-foreground text-sm">{pull?.user}</p>
-                  <p className="text-xs text-muted-foreground">{pull?.timestamp}</p>
+                
+                {/* Overlay Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+
+                {/* Card Info Overlay */}
+                <div className="absolute inset-x-0 bottom-0 p-4">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <h3 className="text-lg font-display font-bold text-white mb-1">
+                        {pull.name}
+                      </h3>
+                      <p className="text-sm text-white/80">
+                        {pull.set}
+                      </p>
+                    </div>
+                    <span className="text-lg font-bold text-white">
+                      {pull.price}
+                    </span>
+                  </div>
                 </div>
-              </div>
 
-              <div className="mb-3">
-                <h3 className="font-semibold text-foreground text-sm leading-tight mb-1">
-                  {pull?.card}
-                </h3>
-                <p className="text-xs text-muted-foreground">{pull?.set}</p>
-              </div>
-
-              <div className="flex items-center justify-between pt-3 border-t border-border">
-                <div className="flex items-center space-x-4">
-                  <button className="flex items-center space-x-1 text-muted-foreground hover:text-error transition-colors">
+                {/* Quick Actions */}
+                <div className="absolute top-4 right-4 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <button className="w-8 h-8 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-sm text-white flex items-center justify-center transition-colors">
                     <Icon name="Heart" size={14} />
-                    <span className="text-xs">{pull?.likes}</span>
                   </button>
-                  <button className="flex items-center space-x-1 text-muted-foreground hover:text-accent transition-colors">
-                    <Icon name="MessageCircle" size={14} />
-                    <span className="text-xs">{pull?.comments}</span>
+                  <button className="w-8 h-8 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-sm text-white flex items-center justify-center transition-colors">
+                    <Icon name="Share2" size={14} />
                   </button>
                 </div>
-                <button className="text-muted-foreground hover:text-accent transition-colors">
-                  <Icon name="Share2" size={14} />
-                </button>
+              </div>
+
+              {/* Card Footer */}
+              <div className="p-4">
+                <div className="flex items-center justify-between mb-4">
+                  {/* User Info */}
+                  <div className="flex items-center space-x-2">
+                    <Image
+                      src={pull.user.avatar}
+                      alt={pull.user.name}
+                      className="w-6 h-6 rounded-full"
+                    />
+                    <span className="text-sm font-medium text-foreground">
+                      {pull.user.name}
+                    </span>
+                  </div>
+                  
+                  {/* Timestamp */}
+                  <span className="text-xs text-muted-foreground">
+                    {pull.timestamp}
+                  </span>
+                </div>
+
+                {/* Engagement Stats */}
+                <div className="flex items-center justify-between text-sm text-muted-foreground">
+                  <div className="flex items-center space-x-4">
+                    <div className="flex items-center space-x-1">
+                      <Icon name="Heart" size={14} />
+                      <span>{pull.likes}</span>
+                    </div>
+                    <div className="flex items-center space-x-1">
+                      <Icon name="MessageCircle" size={14} />
+                      <span>{pull.comments}</span>
+                    </div>
+                  </div>
+
+                  {/* Condition Badge */}
+                  <span className="px-2 py-1 bg-success/10 text-success text-xs font-medium rounded">
+                    {pull.condition}
+                  </span>
+                </div>
+              </div>
+
+              {/* Card Shine Effect */}
+              <div className="absolute inset-0 pointer-events-none transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/30 to-white/0 translate-x-full group-hover:translate-x-[-300%] transition-transform duration-[1.5s] ease-premium"></div>
               </div>
             </div>
           </div>
         ))}
       </div>
+
+      {/* View More Button */}
       <div className="text-center mt-8">
-        <Link to="/product-catalog-advanced-tcg-discovery">
-          <button className="px-6 py-3 bg-accent text-accent-foreground font-medium rounded-lg hover:bg-accent/90 transition-colors duration-200 flex items-center space-x-2 mx-auto">
-            <Icon name="Camera" size={18} />
-            <span>Share Your Pull</span>
-          </button>
+        <Link
+          to="/pulls"
+          className="inline-flex items-center space-x-2 px-6 py-3 bg-accent text-white rounded-full font-medium shadow-collector hover:bg-accent/90 transition-all duration-200 group"
+        >
+          <span>View More Pulls</span>
+          <Icon 
+            name="ArrowRight" 
+            size={18} 
+            className="group-hover:translate-x-0.5 transition-transform" 
+          />
         </Link>
       </div>
     </div>

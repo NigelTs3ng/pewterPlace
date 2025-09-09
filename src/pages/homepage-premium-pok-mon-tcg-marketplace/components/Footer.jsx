@@ -1,241 +1,201 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Icon from '../../../components/AppIcon';
+import Image from '../../../components/AppImage';
 
 const Footer = () => {
-  const currentYear = new Date()?.getFullYear();
-
-  const footerSections = [
-    {
-      title: "Shop",
-      links: [
-        { name: "New Releases", path: "/product-catalog-advanced-tcg-discovery" },
-        { name: "Singles", path: "/product-catalog-advanced-tcg-discovery" },
-        { name: "Sealed Products", path: "/product-catalog-advanced-tcg-discovery" },
-        { name: "Graded Cards", path: "/product-catalog-advanced-tcg-discovery" },
-        { name: "Japanese Cards", path: "/product-catalog-advanced-tcg-discovery" },
-        { name: "Vintage Collection", path: "/product-catalog-advanced-tcg-discovery" }
-      ]
-    },
-    {
-      title: "Account",
-      links: [
-        { name: "My Dashboard", path: "/user-account-dashboard-collector-command-center" },
-        { name: "Order History", path: "/user-account-dashboard-collector-command-center" },
-        { name: "Wishlist", path: "/user-account-dashboard-collector-command-center" },
-        { name: "Collection Tracker", path: "/user-account-dashboard-collector-command-center" },
-        { name: "Rewards Program", path: "/user-account-dashboard-collector-command-center" }
-      ]
-    },
-    {
-      title: "Support",
-      links: [
-        { name: "Help Center", path: "#" },
-        { name: "Authentication Guide", path: "#" },
-        { name: "Shipping Info", path: "#" },
-        { name: "Returns & Refunds", path: "#" },
-        { name: "Contact Us", path: "#" },
-        { name: "Live Chat", path: "#" }
-      ]
-    },
-    {
-      title: "Company",
-      links: [
-        { name: "About PewterPlace", path: "#" },
-        { name: "Our Story", path: "#" },
-        { name: "Careers", path: "#" },
-        { name: "Press Kit", path: "#" },
-        { name: "Partnerships", path: "#" },
-        { name: "Affiliate Program", path: "#" }
-      ]
-    }
-  ];
+  const footerLinks = {
+    shop: [
+      { label: 'Singles', href: '/singles' },
+      { label: 'Sealed Products', href: '/sealed' },
+      { label: 'Graded Cards', href: '/graded' },
+      { label: 'Japanese Cards', href: '/japanese' },
+      { label: 'Accessories', href: '/accessories' }
+    ],
+    collect: [
+      { label: 'Set Lists', href: '/sets' },
+      { label: 'Collection Manager', href: '/collection' },
+      { label: 'Price Guide', href: '/prices' },
+      { label: 'Authentication', href: '/authentication' },
+      { label: 'Grading Service', href: '/grading' }
+    ],
+    company: [
+      { label: 'About Us', href: '/about' },
+      { label: 'Blog', href: '/blog' },
+      { label: 'Careers', href: '/careers' },
+      { label: 'Press', href: '/press' },
+      { label: 'Partners', href: '/partners' }
+    ],
+    support: [
+      { label: 'Help Center', href: '/help' },
+      { label: 'Contact Us', href: '/contact' },
+      { label: 'Shipping Info', href: '/shipping' },
+      { label: 'Returns', href: '/returns' },
+      { label: 'Track Order', href: '/track' }
+    ]
+  };
 
   const socialLinks = [
-    { name: "Facebook", icon: "Facebook", url: "#" },
-    { name: "Twitter", icon: "Twitter", url: "#" },
-    { name: "Instagram", icon: "Instagram", url: "#" },
-    { name: "YouTube", icon: "Youtube", url: "#" },
-    { name: "Discord", icon: "MessageSquare", url: "#" },
-    { name: "TikTok", icon: "Video", url: "#" }
-  ];
-
-  const paymentMethods = [
-    { name: "Visa", icon: "CreditCard" },
-    { name: "Mastercard", icon: "CreditCard" },
-    { name: "PayPal", icon: "Wallet" },
-    { name: "Apple Pay", icon: "Smartphone" },
-    { name: "Google Pay", icon: "Smartphone" }
+    { icon: 'Twitter', href: 'https://twitter.com/pewterplace' },
+    { icon: 'Instagram', href: 'https://instagram.com/pewterplace' },
+    { icon: 'Youtube', href: 'https://youtube.com/pewterplace' },
+    { icon: 'Facebook', href: 'https://facebook.com/pewterplace' },
+    { icon: 'Discord', href: 'https://discord.gg/pewterplace' }
   ];
 
   return (
-    <footer className="bg-primary text-primary-foreground">
-      {/* Newsletter Section */}
-      <div className="border-b border-primary-foreground/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="text-2xl font-bold mb-2">Stay in the Loop</h3>
-              <p className="text-primary-foreground/80 text-lg">
-                Get exclusive access to new releases, rare finds, and collector insights delivered to your inbox.
-              </p>
-            </div>
-            <div className="space-y-4">
-              <div className="flex flex-col sm:flex-row gap-3">
-                <input
-                  type="email"
-                  placeholder="Enter your email address"
-                  className="flex-1 px-4 py-3 bg-primary-foreground/10 border border-primary-foreground/20 rounded-lg text-primary-foreground placeholder-primary-foreground/60 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
-                />
-                <button className="px-6 py-3 bg-accent text-accent-foreground font-medium rounded-lg hover:bg-accent/90 transition-colors duration-200 flex items-center justify-center space-x-2">
-                  <Icon name="Mail" size={18} />
-                  <span>Subscribe</span>
-                </button>
-              </div>
-              <div className="flex items-center space-x-2 text-sm text-primary-foreground/70">
-                <Icon name="Check" size={14} className="text-success" />
-                <span>Exclusive deals and early access to new products</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+    <footer className="bg-gradient-premium text-white relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-10 mix-blend-overlay pointer-events-none" 
+        style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')" }}
+      ></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        {/* Main Footer Content */}
+        <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-12">
           {/* Brand Section */}
-          <div className="lg:col-span-1">
-            <Link to="/homepage-premium-pok-mon-tcg-marketplace" className="flex items-center space-x-2 mb-6">
-              <div className="relative">
-                <div className="w-10 h-10 bg-gradient-to-br from-accent to-accent/80 rounded-lg flex items-center justify-center">
-                  <Icon name="Zap" size={24} color="white" />
-                </div>
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-success rounded-full animate-pulse-slow"></div>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-bold tracking-tight">PewterPlace</span>
-                <span className="text-xs text-primary-foreground/70 font-mono -mt-1">TCG Sanctuary</span>
-              </div>
-            </Link>
-            
-            <p className="text-primary-foreground/80 text-sm leading-relaxed mb-6">
-              The premier destination for authentic Pokémon Trading Cards. Built by collectors, for collectors.
-            </p>
+          <div className="lg:col-span-2">
+            <div className="space-y-8">
+              <Link to="/" className="block">
+                <Image
+                  src="/logo-white.png"
+                  alt="PewterPlace"
+                  className="h-8 w-auto"
+                />
+              </Link>
+              
+              <p className="text-white/80 text-sm leading-relaxed max-w-md">
+                Your trusted destination for authentic Pokémon cards. We connect collectors with verified sellers and rare finds, ensuring every transaction is secure and every card is genuine.
+              </p>
 
-            <div className="space-y-3">
-              <div className="flex items-center space-x-2 text-sm">
-                <Icon name="MapPin" size={14} className="text-accent" />
-                <span className="text-primary-foreground/80">Singapore • Worldwide Shipping</span>
-              </div>
-              <div className="flex items-center space-x-2 text-sm">
-                <Icon name="Phone" size={14} className="text-accent" />
-                <span className="text-primary-foreground/80">+65 1234 5678</span>
-              </div>
-              <div className="flex items-center space-x-2 text-sm">
-                <Icon name="Mail" size={14} className="text-accent" />
-                <span className="text-primary-foreground/80">hello@pewterplace.com</span>
+              {/* Newsletter */}
+              <div className="space-y-4">
+                <h4 className="text-sm font-semibold">Stay Updated</h4>
+                <div className="flex space-x-2">
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    className="flex-1 px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+                  />
+                  <button className="px-4 py-2 bg-accent hover:bg-accent/90 text-white rounded-lg transition-colors duration-200">
+                    Subscribe
+                  </button>
+                </div>
+                <p className="text-white/60 text-xs">
+                  Get weekly updates on new releases and market trends
+                </p>
               </div>
             </div>
           </div>
 
-          {/* Footer Links */}
-          {footerSections?.map((section) => (
-            <div key={section?.title} className="lg:col-span-1">
-              <h4 className="text-lg font-semibold mb-4">{section?.title}</h4>
-              <ul className="space-y-2">
-                {section?.links?.map((link) => (
-                  <li key={link?.name}>
+          {/* Quick Links */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 lg:col-span-4 gap-8">
+            <div>
+              <h4 className="text-lg font-display font-bold mb-4">Shop</h4>
+              <ul className="space-y-3">
+                {footerLinks.shop.map((link) => (
+                  <li key={link.href}>
                     <Link
-                      to={link?.path}
-                      className="text-primary-foreground/70 hover:text-primary-foreground text-sm transition-colors duration-200 flex items-center space-x-1 group"
+                      to={link.href}
+                      className="text-sm text-white/80 hover:text-white transition-colors duration-200"
                     >
-                      <span>{link?.name}</span>
-                      <Icon name="ArrowRight" size={12} className="opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                      {link.label}
                     </Link>
                   </li>
                 ))}
               </ul>
             </div>
-          ))}
-        </div>
-      </div>
-      {/* Bottom Section */}
-      <div className="border-t border-primary-foreground/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
-            {/* Social Links */}
+
             <div>
-              <h5 className="font-semibold mb-4">Follow Us</h5>
-              <div className="flex items-center space-x-3">
-                {socialLinks?.map((social) => (
-                  <a
-                    key={social?.name}
-                    href={social?.url}
-                    className="w-10 h-10 bg-primary-foreground/10 hover:bg-accent rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
-                    title={social?.name}
-                  >
-                    <Icon name={social?.icon} size={18} />
-                  </a>
+              <h4 className="text-lg font-display font-bold mb-4">Collect</h4>
+              <ul className="space-y-3">
+                {footerLinks.collect.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      to={link.href}
+                      className="text-sm text-white/80 hover:text-white transition-colors duration-200"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
 
-            {/* Payment Methods */}
-            <div className="text-center">
-              <h5 className="font-semibold mb-4">Secure Payments</h5>
-              <div className="flex items-center justify-center space-x-3">
-                {paymentMethods?.map((method) => (
-                  <div
-                    key={method?.name}
-                    className="w-12 h-8 bg-primary-foreground/10 rounded flex items-center justify-center"
-                    title={method?.name}
-                  >
-                    <Icon name={method?.icon} size={16} className="text-primary-foreground/70" />
-                  </div>
+            <div>
+              <h4 className="text-lg font-display font-bold mb-4">Company</h4>
+              <ul className="space-y-3">
+                {footerLinks.company.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      to={link.href}
+                      className="text-sm text-white/80 hover:text-white transition-colors duration-200"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
                 ))}
-              </div>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-lg font-display font-bold mb-4">Support</h4>
+              <ul className="space-y-3">
+                {footerLinks.support.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      to={link.href}
+                      className="text-sm text-white/80 hover:text-white transition-colors duration-200"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-white/10 py-8">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            {/* Copyright */}
+            <div className="text-sm text-white/60">
+              © 2025 PewterPlace. All rights reserved.
+            </div>
+
+            {/* Social Links */}
+            <div className="flex items-center space-x-4">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.href}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200"
+                >
+                  <Icon name={social.icon} size={20} className="text-white" />
+                </a>
+              ))}
             </div>
 
             {/* Trust Badges */}
-            <div className="text-center lg:text-right">
-              <h5 className="font-semibold mb-4">Trusted & Secure</h5>
-              <div className="flex items-center justify-center lg:justify-end space-x-4">
-                <div className="flex items-center space-x-2 bg-success/20 text-success px-3 py-1 rounded-full">
-                  <Icon name="Shield" size={14} />
-                  <span className="text-xs font-medium">SSL Secured</span>
-                </div>
-                <div className="flex items-center space-x-2 bg-accent/20 text-accent px-3 py-1 rounded-full">
-                  <Icon name="Award" size={14} />
-                  <span className="text-xs font-medium">Verified</span>
-                </div>
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2 px-3 py-1.5 bg-white/10 rounded-lg">
+                <Icon name="Shield" size={16} className="text-success" />
+                <span className="text-xs text-white/80">Secure Payments</span>
               </div>
-            </div>
-          </div>
-
-          {/* Copyright */}
-          <div className="mt-8 pt-8 border-t border-primary-foreground/10">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
-              <div className="text-sm text-primary-foreground/70">
-                <p>&copy; {currentYear} PewterPlace. All rights reserved.</p>
-              </div>
-              
-              <div className="flex flex-wrap items-center space-x-6 text-sm text-primary-foreground/70">
-                <Link to="#" className="hover:text-primary-foreground transition-colors duration-200">
-                  Privacy Policy
-                </Link>
-                <Link to="#" className="hover:text-primary-foreground transition-colors duration-200">
-                  Terms of Service
-                </Link>
-                <Link to="#" className="hover:text-primary-foreground transition-colors duration-200">
-                  Cookie Policy
-                </Link>
-                <Link to="#" className="hover:text-primary-foreground transition-colors duration-200">
-                  Accessibility
-                </Link>
+              <div className="flex items-center space-x-2 px-3 py-1.5 bg-white/10 rounded-lg">
+                <Icon name="Award" size={16} className="text-accent" />
+                <span className="text-xs text-white/80">Verified Seller</span>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Decorative Elements */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-accent opacity-10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary opacity-10 rounded-full blur-3xl"></div>
       </div>
     </footer>
   );

@@ -69,7 +69,7 @@ const AdminDashboard = () => {
       </Helmet>
       <div className="min-h-screen bg-background">
         {/* Admin Header */}
-        <div className="bg-card border-b border-border sticky top-16 z-40">
+        <div className="bg-card/95 backdrop-blur-premium border-b border-border sticky top-0 z-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center space-x-4">
@@ -96,13 +96,14 @@ const AdminDashboard = () => {
                   </div>
                   <div className="text-muted-foreground">•</div>
                   <span className="text-muted-foreground">
-                    Last updated: {new Date()?.toLocaleTimeString()}
+                    Last updated: {new Date().toLocaleTimeString()}
                   </span>
                 </div>
 
                 <div className="flex items-center space-x-3">
-                  <Button variant="outline" size="sm" iconName="Bell">
-                    <span className="hidden sm:inline ml-2">Alerts</span>
+                  <Button variant="outline" size="sm" className="relative">
+                    <Icon name="Bell" size={16} />
+                    <span className="absolute -top-1 -right-1 w-4 h-4 bg-error text-error-foreground text-xs rounded-full flex items-center justify-center">3</span>
                   </Button>
                   
                   <div className="flex items-center space-x-3 pl-3 border-l border-border">
@@ -110,10 +111,13 @@ const AdminDashboard = () => {
                       <p className="text-sm font-medium text-foreground">{adminInfo?.name}</p>
                       <p className="text-xs text-muted-foreground">{adminInfo?.role}</p>
                     </div>
-                    <div className="w-8 h-8 bg-gradient-to-br from-accent to-blue-500 rounded-full flex items-center justify-center">
-                      <span className="text-white text-sm font-bold">
-                        {adminInfo?.name?.split(' ')?.map(n => n?.[0])?.join('')}
-                      </span>
+                    <div className="relative">
+                      <div className="w-8 h-8 bg-gradient-to-br from-accent to-blue-500 rounded-full flex items-center justify-center">
+                        <span className="text-white text-sm font-bold">
+                          {adminInfo?.name?.split(' ')?.map(n => n?.[0])?.join('')}
+                        </span>
+                      </div>
+                      <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-success border-2 border-card rounded-full"></div>
                     </div>
                   </div>
                 </div>

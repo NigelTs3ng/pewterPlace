@@ -7,65 +7,55 @@ export default {
   theme: {
     extend: {
       colors: {
-        border: 'var(--color-border)', /* slate-200 */
-        input: 'var(--color-input)', /* slate-100 */
-        ring: 'var(--color-ring)', /* blue-500 */
-        background: 'var(--color-background)', /* slate-50 */
-        foreground: 'var(--color-foreground)', /* slate-900 */
+        border: 'var(--color-border)',
+        input: 'var(--color-input)',
+        ring: 'var(--color-ring)',
+        background: 'var(--color-background)',
+        foreground: 'var(--color-foreground)',
         primary: {
-          DEFAULT: 'var(--color-primary)', /* slate-800 */
-          foreground: 'var(--color-primary-foreground)', /* slate-50 */
+          DEFAULT: '#1a1c2a', // Deeper, richer dark blue
+          foreground: '#ffffff',
         },
         secondary: {
-          DEFAULT: 'var(--color-secondary)', /* slate-700 */
-          foreground: 'var(--color-secondary-foreground)', /* slate-50 */
-        },
-        destructive: {
-          DEFAULT: 'var(--color-destructive)', /* red-500 */
-          foreground: 'var(--color-destructive-foreground)', /* white */
-        },
-        muted: {
-          DEFAULT: 'var(--color-muted)', /* slate-100 */
-          foreground: 'var(--color-muted-foreground)', /* slate-500 */
+          DEFAULT: '#2a2d3d',
+          foreground: '#ffffff',
         },
         accent: {
-          DEFAULT: 'var(--color-accent)', /* blue-500 */
-          foreground: 'var(--color-accent-foreground)', /* white */
+          DEFAULT: '#6366f1', // Vibrant indigo
+          foreground: '#ffffff',
         },
-        popover: {
-          DEFAULT: 'var(--color-popover)', /* white */
-          foreground: 'var(--color-popover-foreground)', /* slate-900 */
+        muted: {
+          DEFAULT: '#f4f5f7',
+          foreground: '#64748b',
         },
         card: {
-          DEFAULT: 'var(--color-card)', /* white */
-          foreground: 'var(--color-card-foreground)', /* slate-900 */
+          DEFAULT: '#ffffff',
+          foreground: '#1a1c2a',
         },
         success: {
-          DEFAULT: 'var(--color-success)', /* emerald-500 */
-          foreground: 'var(--color-success-foreground)', /* white */
+          DEFAULT: '#10b981',
+          foreground: '#ffffff',
         },
         warning: {
-          DEFAULT: 'var(--color-warning)', /* amber-500 */
-          foreground: 'var(--color-warning-foreground)', /* white */
+          DEFAULT: '#f59e0b',
+          foreground: '#ffffff',
         },
         error: {
-          DEFAULT: 'var(--color-error)', /* red-500 */
-          foreground: 'var(--color-error-foreground)', /* white */
+          DEFAULT: '#ef4444',
+          foreground: '#ffffff',
         },
-        surface: 'var(--color-surface)', /* slate-100 */
-        'text-primary': 'var(--color-text-primary)', /* slate-900 */
-        'text-secondary': 'var(--color-text-secondary)', /* slate-500 */
-        holographic: {
-          1: 'var(--color-holographic-1)', /* coral */
-          2: 'var(--color-holographic-2)', /* turquoise */
-          3: 'var(--color-holographic-3)', /* sky-blue */
-          4: 'var(--color-holographic-4)', /* mint */
-          5: 'var(--color-holographic-5)', /* cream */
-        },
+        rarity: {
+          common: '#94a3b8',
+          uncommon: '#2dd4bf',
+          rare: '#3b82f6',
+          'ultra-rare': '#a855f7',
+          secret: '#f59e0b',
+        }
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'Consolas', 'monospace'],
+        sans: ['Inter var', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['Cabinet Grotesk', 'Inter var', 'sans-serif'], // Premium display font
+        mono: ['JetBrains Mono', 'monospace'],
       },
       fontSize: {
         'xs': ['0.75rem', { lineHeight: '1rem' }],
@@ -97,14 +87,20 @@ export default {
         '3xl': '1.5rem',
       },
       boxShadow: {
-        'card': '0 4px 6px -1px rgba(30, 41, 59, 0.1), 0 2px 4px -1px rgba(30, 41, 59, 0.06)',
-        'card-hover': '0 10px 15px -3px rgba(30, 41, 59, 0.1), 0 4px 6px -2px rgba(30, 41, 59, 0.05)',
-        'premium': '0 8px 32px rgba(30, 41, 59, 0.1)',
-        'auth-badge': '0 8px 32px rgba(16, 185, 129, 0.1)',
+        'card': '0px 4px 6px -1px rgba(0, 0, 0, 0.05), 0px 2px 4px -1px rgba(0, 0, 0, 0.03)',
+        'card-hover': '0px 10px 20px rgba(0, 0, 0, 0.08)',
+        'premium': '0px 8px 24px rgba(0, 0, 0, 0.12)',
+        'collector': '0px 4px 12px rgba(99, 102, 241, 0.2)',
+      },
+      backgroundImage: {
+        'gradient-premium': 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%)',
+        'gradient-card': 'linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(99, 102, 241, 0.03) 100%)',
+        'gradient-radial': 'radial-gradient(circle at center, var(--color-accent) 0%, transparent 70%)',
       },
       animation: {
         'holographic-shimmer': 'holographic-shimmer 3s ease-in-out infinite',
         'float': 'float 3s ease-in-out infinite',
+        'shimmer': 'shimmer 2s linear infinite',
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       keyframes: {

@@ -61,32 +61,38 @@ const HeroCarousel = () => {
   };
 
   return (
-    <div className="relative w-full h-[500px] md:h-[600px] overflow-hidden rounded-xl bg-gradient-to-br from-primary to-accent">
+    <div className="relative w-full h-[500px] md:h-[600px] overflow-hidden rounded-2xl bg-gradient-premium shadow-premium">
+      {/* Background Texture */}
+      <div className="absolute inset-0 opacity-20 mix-blend-overlay" 
+        style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')" }}
+      ></div>
+
       {/* Slides */}
       <div className="relative w-full h-full">
         {heroSlides?.map((slide, index) => (
           <div
             key={slide?.id}
-            className={`absolute inset-0 transition-all duration-700 ease-in-out ${
+            className={`absolute inset-0 transition-all duration-700 ease-premium ${
               index === currentSlide 
                 ? 'opacity-100 translate-x-0' 
                 : index < currentSlide 
-                  ? 'opacity-0 -translate-x-full' :'opacity-0 translate-x-full'
+                  ? 'opacity-0 -translate-x-full' 
+                  : 'opacity-0 translate-x-full'
             }`}
           >
             <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
               {/* Content */}
-              <div className="flex flex-col justify-center p-8 md:p-12 lg:p-16 text-white">
-                <div className="space-y-6">
+              <div className="flex flex-col justify-center p-8 md:p-12 lg:p-16 text-white relative z-10">
+                <div className="space-y-8">
                   <div className="flex items-center space-x-3">
-                    <span className="px-3 py-1 bg-success text-success-foreground text-xs font-semibold rounded-full">
+                    <span className="px-4 py-1.5 bg-white/10 backdrop-blur-premium text-white text-xs font-semibold rounded-full border border-white/20">
                       {slide?.badge}
                     </span>
-                    <span className="text-lg font-bold">{slide?.price}</span>
+                    <span className="text-lg font-display font-bold tracking-tight">{slide?.price}</span>
                   </div>
                   
-                  <div className="space-y-3">
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                  <div className="space-y-4">
+                    <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
                       {slide?.title}
                     </h1>
                     <h2 className="text-xl md:text-2xl text-white/90 font-medium">
@@ -99,12 +105,20 @@ const HeroCarousel = () => {
 
                   <div className="flex flex-col sm:flex-row gap-4 pt-4">
                     <Link to="/product-catalog-advanced-tcg-discovery">
-                      <Button variant="default" size="lg" className="bg-white text-primary hover:bg-white/90">
+                      <Button 
+                        variant="default" 
+                        size="lg" 
+                        className="bg-white text-primary hover:bg-white/90 shadow-collector transition-all duration-300 hover:scale-[1.02]"
+                      >
                         <Icon name="ShoppingBag" size={20} className="mr-2" />
                         {slide?.cta}
                       </Button>
                     </Link>
-                    <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
+                    <Button 
+                      variant="outline" 
+                      size="lg" 
+                      className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm transition-all duration-300"
+                    >
                       <Icon name="Play" size={20} className="mr-2" />
                       Watch Preview
                     </Button>
@@ -114,14 +128,15 @@ const HeroCarousel = () => {
 
               {/* Image */}
               <div className="relative hidden lg:flex items-center justify-center p-8">
-                <div className="relative">
+                <div className="relative transform transition-transform duration-500 hover:scale-[1.02]">
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/20 rounded-xl"></div>
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-accent to-primary opacity-50 blur-2xl"></div>
                   <Image
                     src={slide?.image}
                     alt={slide?.title}
-                    className="w-full h-80 object-cover rounded-xl shadow-2xl"
+                    className="relative w-full h-96 object-cover rounded-xl shadow-premium"
                   />
-                  <div className="absolute -top-2 -right-2 w-16 h-16 bg-success rounded-full flex items-center justify-center animate-pulse-slow">
+                  <div className="absolute -top-2 -right-2 w-16 h-16 bg-gradient-to-br from-success to-success/80 rounded-full flex items-center justify-center animate-pulse-slow shadow-collector">
                     <Icon name="Star" size={24} color="white" />
                   </div>
                 </div>
@@ -130,34 +145,39 @@ const HeroCarousel = () => {
           </div>
         ))}
       </div>
+
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-black/20 hover:bg-black/40 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all duration-300 z-10"
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-black/20 hover:bg-black/40 backdrop-blur-premium rounded-full flex items-center justify-center text-white transition-all duration-300 z-10 border border-white/20 hover:scale-110"
       >
         <Icon name="ChevronLeft" size={24} />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-black/20 hover:bg-black/40 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all duration-300 z-10"
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-black/20 hover:bg-black/40 backdrop-blur-premium rounded-full flex items-center justify-center text-white transition-all duration-300 z-10 border border-white/20 hover:scale-110"
       >
         <Icon name="ChevronRight" size={24} />
       </button>
+
       {/* Dots Indicator */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3">
         {heroSlides?.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
               index === currentSlide 
-                ? 'bg-white scale-125' :'bg-white/50 hover:bg-white/75'
+                ? 'bg-white scale-125 shadow-collector' 
+                : 'bg-white/40 hover:bg-white/60'
             }`}
           />
         ))}
       </div>
-      {/* Holographic Overlay Effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-pulse-slow pointer-events-none"></div>
+
+      {/* Enhanced Holographic Overlay Effect */}
+      <div className="absolute inset-0 bg-gradient-to-r from-accent/5 via-white/10 to-primary/5 animate-shimmer pointer-events-none"></div>
+      <div className="absolute inset-0 bg-gradient-radial opacity-20 mix-blend-overlay pointer-events-none"></div>
     </div>
   );
 };

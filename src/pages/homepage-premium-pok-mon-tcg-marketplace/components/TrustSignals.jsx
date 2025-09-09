@@ -3,214 +3,147 @@ import Icon from '../../../components/AppIcon';
 import Image from '../../../components/AppImage';
 
 const TrustSignals = () => {
-  const trustFeatures = [
+  const trustSignals = [
     {
       id: 1,
       icon: "Shield",
-      title: "100% Authentic Guarantee",
-      description: "Every card verified by our expert authentication team",
-      stats: "1M+ cards authenticated",
-      color: "text-success"
+      title: "Authentication Guarantee",
+      description: "Every card authenticated by PSA-certified experts",
+      stat: "100K+",
+      statLabel: "Cards Verified",
+      color: "from-emerald-400 to-emerald-600"
     },
     {
       id: 2,
       icon: "Truck",
-      title: "Same-Day Shipping",
-      description: "Orders placed before 2 PM ship the same day",
-      stats: "99.8% on-time delivery",
-      color: "text-accent"
+      title: "Secure Shipping",
+      description: "Fully insured shipping with tracking on all orders",
+      stat: "99.9%",
+      statLabel: "Delivery Success",
+      color: "from-blue-400 to-blue-600"
     },
     {
       id: 3,
-      icon: "RotateCcw",
-      title: "30-Day Returns",
-      description: "Not satisfied? Return within 30 days for full refund",
-      stats: "Hassle-free process",
-      color: "text-warning"
-    },
-    {
-      id: 4,
       icon: "Star",
-      title: "5-Star Service",
-      description: "Rated excellent by thousands of collectors",
-      stats: "4.9/5 customer rating",
-      color: "text-amber-500"
-    }
-  ];
-
-  const certifications = [
-    {
-      id: 1,
-      name: "PSA Authorized Dealer",
-      logo: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=80&h=40&fit=crop",
-      description: "Official PSA grading partner"
-    },
-    {
-      id: 2,
-      name: "BGS Certified",
-      logo: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=80&h=40&fit=crop",
-      description: "Beckett authentication certified"
-    },
-    {
-      id: 3,
-      name: "CGC Verified",
-      logo: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=80&h=40&fit=crop",
-      description: "CGC grading verification"
+      title: "Trusted by Collectors",
+      description: "Join thousands of satisfied Pokémon card collectors",
+      stat: "50K+",
+      statLabel: "Happy Collectors",
+      color: "from-amber-400 to-amber-600"
     },
     {
       id: 4,
-      name: "SSL Secured",
-      logo: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=80&h=40&fit=crop",
-      description: "256-bit encryption security"
+      icon: "Award",
+      title: "Money-Back Guarantee",
+      description: "30-day returns for any reason, hassle-free",
+      stat: "100%",
+      statLabel: "Satisfaction Rate",
+      color: "from-purple-400 to-purple-600"
     }
   ];
 
-  const testimonials = [
+  const partners = [
     {
       id: 1,
-      name: "Alex Thompson",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face",
-      rating: 5,
-      comment: "Best TCG marketplace I\'ve used. Cards arrived exactly as described and shipping was lightning fast.",
-      purchase: "Charizard ex PSA 10",
-      verified: true
+      name: "PSA",
+      logo: "https://example.com/psa-logo.png",
+      alt: "PSA Authentication"
     },
-    {
-      id: 2,
-      name: "Maria Garcia",
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face",
-      rating: 5,
-      comment: "Authentication process is thorough and transparent. I trust PewterPlace with my high-value purchases.",
-      purchase: "Base Set Booster Box",
-      verified: true
-    },
-    {
-      id: 3,
-      name: "David Kim",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face",
-      rating: 5,
-      comment: "Customer service is exceptional. They helped me complete my entire Pokémon 151 set.",
-      purchase: "Pokémon 151 Singles",
-      verified: true
-    }
+    // ...other partners
   ];
-
-  const renderStars = (rating) => {
-    return Array.from({ length: 5 }, (_, index) => (
-      <Icon
-        key={index}
-        name="Star"
-        size={14}
-        className={index < rating ? "text-amber-400 fill-current" : "text-muted-foreground"}
-      />
-    ));
-  };
 
   return (
-    <div className="mb-12">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-          Trusted by Collectors Worldwide
-        </h2>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Join thousands of satisfied collectors who trust PewterPlace for authentic cards and exceptional service
-        </p>
-      </div>
-      {/* Trust Features */}
+    <div className="mb-16">
+      {/* Trust Signals Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-        {trustFeatures?.map((feature) => (
+        {trustSignals.map((signal) => (
           <div
-            key={feature?.id}
-            className="bg-card border border-border rounded-xl p-6 text-center hover:shadow-card-shadow-hover transition-all duration-300 hover:-translate-y-1"
+            key={signal.id}
+            className="group card-premium relative overflow-hidden"
           >
-            <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-muted flex items-center justify-center ${feature?.color}`}>
-              <Icon name={feature?.icon} size={28} />
-            </div>
-            <h3 className="text-lg font-semibold text-foreground mb-2">{feature?.title}</h3>
-            <p className="text-muted-foreground text-sm mb-3 leading-relaxed">{feature?.description}</p>
-            <div className="inline-flex items-center space-x-1 bg-muted px-3 py-1 rounded-full">
-              <Icon name="Check" size={12} className="text-success" />
-              <span className="text-xs font-medium text-foreground">{feature?.stats}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-      {/* Certifications */}
-      <div className="bg-muted/30 rounded-xl p-8 mb-12">
-        <div className="text-center mb-8">
-          <h3 className="text-2xl font-bold text-foreground mb-2">Official Partnerships</h3>
-          <p className="text-muted-foreground">Certified by industry-leading authentication services</p>
-        </div>
-        
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {certifications?.map((cert) => (
-            <div
-              key={cert?.id}
-              className="bg-card border border-border rounded-lg p-4 text-center hover:shadow-sm transition-shadow duration-200"
-            >
-              <Image
-                src={cert?.logo}
-                alt={cert?.name}
-                className="w-16 h-8 mx-auto mb-3 object-contain"
-              />
-              <h4 className="font-semibold text-foreground text-sm mb-1">{cert?.name}</h4>
-              <p className="text-xs text-muted-foreground">{cert?.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-      {/* Customer Testimonials */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {testimonials?.map((testimonial) => (
-          <div
-            key={testimonial?.id}
-            className="bg-card border border-border rounded-xl p-6 hover:shadow-card-shadow-hover transition-all duration-300"
-          >
-            <div className="flex items-center space-x-3 mb-4">
-              <Image
-                src={testimonial?.avatar}
-                alt={testimonial?.name}
-                className="w-12 h-12 rounded-full object-cover"
-              />
-              <div className="flex-1">
-                <div className="flex items-center space-x-2 mb-1">
-                  <h4 className="font-semibold text-foreground">{testimonial?.name}</h4>
-                  {testimonial?.verified && (
-                    <div className="flex items-center space-x-1 bg-success/10 text-success px-2 py-0.5 rounded-full">
-                      <Icon name="Check" size={10} />
-                      <span className="text-xs font-medium">Verified</span>
-                    </div>
-                  )}
-                </div>
-                <div className="flex items-center space-x-1">
-                  {renderStars(testimonial?.rating)}
+            <div className="p-6 relative z-10">
+              {/* Icon */}
+              <div className="mb-6">
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${signal.color} flex items-center justify-center shadow-collector transform group-hover:scale-110 transition-transform duration-500`}>
+                  <Icon name={signal.icon} size={24} className="text-white" />
                 </div>
               </div>
+
+              {/* Content */}
+              <h3 className="text-lg font-display font-bold text-foreground mb-2">
+                {signal.title}
+              </h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                {signal.description}
+              </p>
+
+              {/* Stats */}
+              <div className="flex items-baseline space-x-1">
+                <span className="text-2xl font-bold text-accent">
+                  {signal.stat}
+                </span>
+                <span className="text-sm text-muted-foreground">
+                  {signal.statLabel}
+                </span>
+              </div>
             </div>
+
+            {/* Decorative Elements */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-accent/5 to-primary/5 rounded-full -translate-y-16 translate-x-16 group-hover:translate-y-[-4rem] group-hover:translate-x-20 transition-transform duration-700"></div>
             
-            <blockquote className="text-muted-foreground text-sm leading-relaxed mb-4">
-              "{testimonial?.comment}"
-            </blockquote>
-            
-            <div className="flex items-center space-x-2 text-xs text-muted-foreground">
-              <Icon name="ShoppingBag" size={12} />
-              <span>Purchased: {testimonial?.purchase}</span>
+            {/* Shine Effect */}
+            <div className="absolute inset-0 pointer-events-none transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+              <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/30 to-white/0 translate-x-full group-hover:translate-x-[-300%] transition-transform duration-[1.5s] ease-premium"></div>
             </div>
           </div>
         ))}
       </div>
-      {/* Security Badge */}
-      <div className="text-center mt-12 pt-8 border-t border-border">
-        <div className="inline-flex items-center space-x-4 bg-card border border-border rounded-lg px-6 py-4">
-          <Icon name="Lock" size={24} className="text-success" />
-          <div className="text-left">
-            <p className="font-semibold text-foreground">Secure & Protected</p>
-            <p className="text-sm text-muted-foreground">256-bit SSL encryption • PCI DSS compliant</p>
+
+      {/* Partners Section */}
+      <div className="rounded-2xl bg-muted/50 p-8 backdrop-blur-sm relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-premium opacity-5"></div>
+        
+        {/* Content */}
+        <div className="relative z-10">
+          <div className="text-center mb-8">
+            <h3 className="font-display text-2xl font-bold text-foreground mb-2">
+              Trusted Partners
+            </h3>
+            <p className="text-muted-foreground">
+              Working with industry leaders to ensure authenticity
+            </p>
           </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
-            <span className="text-xs text-success font-medium">Secured</span>
+
+          {/* Partner Logos */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {partners.map((partner) => (
+              <div
+                key={partner.id}
+                className="flex items-center justify-center"
+              >
+                <div className="relative group">
+                  <div className="absolute -inset-2 bg-gradient-to-r from-accent to-primary opacity-0 group-hover:opacity-20 blur transition-opacity duration-500 rounded-xl"></div>
+                  <Image
+                    src={partner.logo}
+                    alt={partner.alt}
+                    className="h-12 w-auto grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                  />
+                </div>
+              </div>
+            ))}
           </div>
+        </div>
+
+        {/* Background Patterns */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-accent opacity-5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary opacity-5 rounded-full blur-3xl"></div>
+      </div>
+
+      {/* Authentication Process */}
+      <div className="mt-12 text-center">
+        <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-success/10 text-success text-sm font-medium">
+          <Icon name="Shield" size={16} />
+          <span>Every card authenticated by experts</span>
         </div>
       </div>
     </div>
