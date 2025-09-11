@@ -18,7 +18,8 @@ const CategoryPortals = () => {
         name: "Charizard ex",
         price: "$89.99",
         image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=200&h=280&fit=crop"
-      }
+      },
+      path: "/product-catalog-advanced-tcg-discovery"
     },
     {
       id: 2,
@@ -33,7 +34,8 @@ const CategoryPortals = () => {
         name: "Paldea Evolved Box",
         price: "$144.99",
         image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=280&fit=crop"
-      }
+      },
+      path: "/sealed-products-catalog"
     },
     {
       id: 3,
@@ -48,7 +50,8 @@ const CategoryPortals = () => {
         name: "PSA 10 Pikachu",
         price: "$299.99",
         image: "https://images.unsplash.com/photo-1613963931023-5dc59437c8a6?w=200&h=280&fit=crop"
-      }
+      },
+      path: "/product-catalog-advanced-tcg-discovery"
     },
     {
       id: 4,
@@ -63,7 +66,8 @@ const CategoryPortals = () => {
         name: "Pokémon 151",
         price: "$4.99",
         image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=200&h=280&fit=crop"
-      }
+      },
+      path: "/product-catalog-advanced-tcg-discovery"
     },
     {
       id: 5,
@@ -78,7 +82,8 @@ const CategoryPortals = () => {
         name: "Japanese Eevee",
         price: "$12.99",
         image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=280&fit=crop"
-      }
+      },
+      path: "/product-catalog-advanced-tcg-discovery"
     },
     {
       id: 6,
@@ -93,7 +98,8 @@ const CategoryPortals = () => {
         name: "Base Set Charizard",
         price: "$1,299.99",
         image: "https://images.unsplash.com/photo-1613963931023-5dc59437c8a6?w=200&h=280&fit=crop"
-      }
+      },
+      path: "/product-catalog-advanced-tcg-discovery"
     }
   ];
 
@@ -111,7 +117,7 @@ const CategoryPortals = () => {
         {categories?.map((category) => (
           <Link
             key={category?.id}
-            to="/product-catalog-advanced-tcg-discovery"
+            to={category?.path}
             className="group"
           >
             <div className="relative bg-card border border-border rounded-xl overflow-hidden hover:shadow-card-shadow-hover transition-all duration-300 hover:-translate-y-1">
@@ -129,7 +135,7 @@ const CategoryPortals = () => {
                   <h3 className="text-xl font-bold mb-2">{category?.name}</h3>
                   <p className="text-white/90 text-sm">{category?.description}</p>
                 </div>
-                
+
                 {/* Decorative Elements */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
                 <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-12 -translate-x-12"></div>

@@ -9,6 +9,7 @@ import ShoppingCartCheckout from './pages/shopping-cart-checkout-secure-collecti
 import ProductDetailPage from './pages/product-detail-individual-card-experience';
 import AdminDashboard from './pages/admin-dashboard-operations-command-center';
 import Homepage from './pages/homepage-premium-pok-mon-tcg-marketplace';
+import SealedProductsPage from './pages/sealed-products-catalog';
 
 const Routes = () => {
   return (
@@ -16,14 +17,15 @@ const Routes = () => {
       <ErrorBoundary>
       <ScrollToTop />
       <RouterRoutes>
-        {/* Define your route here */}
-        <Route path="/" element={<AdminDashboard />} />
+        {/* Homepage as the landing page */}
+        <Route path="/" element={<Homepage />} />
         <Route path="/product-catalog-advanced-tcg-discovery" element={<ProductCatalogPage />} />
         <Route path="/user-account-dashboard-collector-command-center" element={<UserAccountDashboard />} />
         <Route path="/shopping-cart-checkout-secure-collection-investment" element={<ShoppingCartCheckout />} />
         <Route path="/product-detail-individual-card-experience" element={<ProductDetailPage />} />
         <Route path="/admin-dashboard-operations-command-center" element={<AdminDashboard />} />
         <Route path="/homepage-premium-pok-mon-tcg-marketplace" element={<Homepage />} />
+        <Route path="/sealed-products-catalog" element={<SealedProductsPage />} />
         <Route path="*" element={<NotFound />} />
       </RouterRoutes>
       </ErrorBoundary>
