@@ -54,7 +54,7 @@ const ProductCatalogPage = () => {
       estimatedDelivery: '2-3 days',
       isHot: true,
       priceChange: -10.1,
-      priceHistory: [99.99, 95.50, 92.00, 89.99, 87.50, 89.99]
+      priceHistory: [99.98, 95.50, 92.00, 89.99, 87.50, 89.99]
     },
     {
       id: 2,
